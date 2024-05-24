@@ -5,10 +5,10 @@ import uvicorn
 
 app = FastAPI() #FastAPI의 객체 생성
 
-origins = [ "http://127.0.0.1:5500" ]
+origins = [ "http://127.0.0.1:5500", "http:222.111.196.53"]
 
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware, 
     allow_origins = origins,
     allow_credentials = True,
     allow_methods = ["*"],
@@ -29,4 +29,4 @@ async def welcome() -> dict:
 app.include_router(todo_router)
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host = "127.0.0.1", port = 8080, reload=True)
+    uvicorn.run("main:app", host = "0.0.0.0", port = 8080, reload=True)
